@@ -1,26 +1,561 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand Colors */
+  --color-accent: #F5C512;
+  /* More vibrant rose-red */
+  --color-accent-hover: #be123c;
+  --color-dark: #09090b;
+  /* Zinc 950 */
+  --color-dark-secondary: #18181b;
+  /* Zinc 900 */
+  --color-dark-card: #0f0f12;
+  --color-dark-border: #27272a;
+  /* Zinc 800 */
+  --color-muted: #71717a;
+  /* Zinc 500 */
+  --color-light-bg: #fafafa;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(9, 9, 11, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: 12px;
+
+  /* Fonts */
+  --font-display: var(--font-bebas);
+  --font-heading: var(--font-oswald);
+  --font-body: var(--font-dm-sans);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* =====================
+   BASE RESET
+   ===================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+/* =====================
+   TYPOGRAPHY HELPERS
+   ===================== */
+.font-display {
+  font-family: var(--font-display), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.0025em;
+}
+
+.font-heading {
+  font-family: var(--font-heading), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.0025em;
+}
+
+.font-body {
+  font-family: var(--font-body), sans-serif;
+}
+
+/* =====================
+   LAYOUT UTILITIES
+   ===================== */
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.container-xl {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* =====================
+   BACKGROUND TEXTURES
+   ===================== */
+.grid-lines {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.stripe-texture {
+  background-image: repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 8px,
+      rgba(255, 255, 255, 0.015) 8px,
+      rgba(255, 255, 255, 0.015) 16px);
+}
+
+/* =====================
+   ANIMATIONS
+   ===================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.fade-up-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-up-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scale-up-in {
+  animation: scaleIn 0.25s ease-out;
+}
+
+.glow-pulse {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* =====================
+   INTERACTIVE STATES
+   ===================== */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =====================
+   DIVIDER ACCENTS
+   ===================== */
+.accent-line {
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background-color: #d42b21;
+  margin-bottom: 1.5rem;
+}
+
+/* =====================
+   SCROLL REVEAL SYSTEM
+   ===================== */
+
+/* -- Keyframes -- */
+@keyframes srFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes srFadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes srFadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes srFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes srScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes srLineGrow {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 40px;
+  }
+}
+
+@keyframes counterSpin {
+  from {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+/* -- Initial hidden states (before IntersectionObserver fires) -- */
+.sr-fade-up,
+.sr-fade-left,
+.sr-fade-right,
+.sr-fade-in,
+.sr-scale-up {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-duration: 0.75s;
+  will-change: opacity, transform;
+}
+
+.sr-fade-up {
+  transform: translateY(40px);
+}
+
+.sr-fade-left {
+  transform: translateX(-48px);
+}
+
+.sr-fade-right {
+  transform: translateX(48px);
+}
+
+.sr-fade-in {
+  transform: none;
+}
+
+.sr-scale-up {
+  transform: scale(0.88);
+}
+
+/* -- Triggered state (class added by ScrollReveal component) -- */
+.sr-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* -- Stagger helpers for grid children -- */
+.stagger-children>*:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.stagger-children>*:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.stagger-children>*:nth-child(3) {
+  transition-delay: 160ms;
+}
+
+.stagger-children>*:nth-child(4) {
+  transition-delay: 240ms;
+}
+
+.stagger-children>*:nth-child(5) {
+  transition-delay: 320ms;
+}
+
+.stagger-children>*:nth-child(6) {
+  transition-delay: 400ms;
+}
+
+/* -- Accent line grow animation -- */
+.accent-line-animate {
+  display: block;
+  height: 3px;
+  background-color: #d42b21;
+  width: 0;
+  margin-bottom: 1.5rem;
+}
+
+.sr-visible .accent-line-animate,
+.accent-line-animate.sr-visible {
+  animation: srLineGrow 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* -- Horizontal scroll shimmer for TrustStrip -- */
+@keyframes shimmerSlide {
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+/* -- Parallax-style hero text float -- */
+@keyframes heroFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.hero-float {
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+/* -- Red glow pulse for badges -- */
+@keyframes redPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 43, 33, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(212, 43, 33, 0.15);
+  }
+}
+
+.badge-pulse {
+  animation: redPulse 2.5s ease-in-out infinite;
+}
+
+/* -- Counter number spin -- */
+.counter-animate {
+  display: inline-block;
+  animation: counterSpin 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* -- Image hover zoom helper (applied via className) -- */
+.img-hover-zoom {
+  overflow: hidden;
+}
+
+.img-hover-zoom img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* =====================
+   CURVED NAVBAR DESIGN
+   ===================== */
+@keyframes navbarSlideDown {
+  from {
+    transform: translateY(-120px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #ffffff;
+  /* Semi-transparent requested color */
+  backdrop-filter: blur(16px);
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 10;
+  color: #000000;
+  /* Global black text for navbar */
+}
+
+.navbar-inner::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent) 40%, var(--color-accent) 60%, transparent);
+  opacity: 0.55;
+  border-radius: 0 0 4px 4px;
+}
+
+.logo-hex-custom {
+  width: 42px;
+  height: 42px;
+  background: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: 0.05em;
+  /* True Hexagon shape */
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.logo-name-custom {
+  font-family: var(--font-barlow-condensed);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.nav-link-custom {
+  font-family: var(--font-barlow-condensed);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-link-custom:hover {
+  color: #000000;
+}
+
+.nav-link-custom.active {
+  color: #000000;
+}
+
+/* Active link underline with dot */
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.nav-link-custom.active::after {
+  width: 100%;
+}
+
+.nav-link-custom.active::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+.cta-btn-curved {
+  background: var(--color-accent);
+  color: #000;
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 22px;
+  display: block;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  box-shadow: 0 0 24px rgba(245, 197, 18, 0.3);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.cta-btn-curved:hover {
+  background: var(--color-accent) !important;
+  color: #000000 !important;
+  transform: scale(1.08) translateY(-1px);
+  box-shadow: 0 8px 32px rgba(245, 197, 18, 0.6);
 }
