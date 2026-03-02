@@ -11,7 +11,7 @@ const services = [
         num: "01",
         title: "Advanced Oil Engineering",
         description: "Premium synthetic oil changes using manufacturer-spec lubricants and filters to extend engine life and maximize efficiency.",
-        image: "/images/oil_change_service_1772083942488.png",
+        image: "/images/oil_change_service_1772083942488.jpeg",
         tags: ["Lubrication", "Filter", "Efficiency"],
     },
     {

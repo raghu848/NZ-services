@@ -20,7 +20,7 @@ const services = [
             "Fuel system optimization & cleaning",
             "Cooling system thermal analysis"
         ],
-        image: "/images/oil_change_service_1772083942488.png"
+        image: "/images/oil_change_service_1772083942488.jpeg"
     },
     {
         id: "braking",
