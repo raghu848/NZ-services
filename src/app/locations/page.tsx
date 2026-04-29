@@ -32,24 +32,24 @@ export default function LocationsPage() {
     return (
         <div className="bg-dark min-h-screen">
             {/* Locations Hero */}
-            <section className="relative py-32 md:py-48 overflow-hidden bg-dark-secondary">
+            <section className="relative py-[82px] md:py-[130px] overflow-hidden bg-dark-secondary">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/location_map_bg.png"
+                        src="/images/maps1.png"
                         alt="NZ Auto Centre Locations Map"
                         fill
-                        className="object-cover opacity-50 grayscale blur-[0.5px]"
+                        className="object-cover opacity-80"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent" />
                 </div>
 
-                <div className="container-xl relative z-10 text-center">
+                <div className="container-xl relative z-10 text-center pt-8 md:pt-12">
                     <FadeUp>
                         <div className="max-w-3xl mx-auto">
                             <h1 className="font-display text-7xl md:text-9xl text-white tracking-tighter uppercase mb-8 leading-none">
                                 OUR <span className="text-accent">LOCATIONS</span>
                             </h1>
-                            <p className="text-muted text-xl font-body max-w-xl mx-auto leading-relaxed">
+                            <p className="text-white text-xl font-body max-w-xl mx-auto leading-relaxed">
                                 Strategically positioned across Auckland to provide elite mechanical care for every community.
                             </p>
                         </div>

@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/Button";
-import { useBooking } from "@/hooks/useBooking";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const bookingSchema = z.object({
     fullName: z.string().min(2, "Name must be at least 2 characters").max(100),
-    phone: z.string().regex(/^(\+64|0)[1-9][0-9]{7,9}$/, "Please enter a valid NZ phone number"),
+    phone: z.string().min(7, "Please enter a valid phone number"),
     email: z.string().email("Please enter a valid email address"),
     vehicleModel: z.string().min(2, "Please include make and model"),
     serviceType: z.enum(['GENERAL_SERVICING', 'TYRES_WHEELS', 'BRAKE_REPAIRS', 'MECHANICAL_REPAIRS', 'VEHICLE_INSPECTION', 'NOT_SURE']),
@@ -23,7 +23,7 @@ const bookingSchema = z.object({
 type BookingFormData = z.infer<typeof bookingSchema>;
 
 export default function BookingForm() {
-    const { submitBooking, loading, success, error } = useBooking();
+    const [success, setSuccess] = useState(false);
 
     const {
         register,
@@ -34,9 +34,24 @@ export default function BookingForm() {
         resolver: zodResolver(bookingSchema),
     });
 
-    const onSubmit = async (data: BookingFormData) => {
-        await submitBooking(data);
-        if (!error) reset();
+    const onSubmit = (data: BookingFormData) => {
+        const text = `*New Booking Request*
+Name: ${data.fullName}
+Phone: ${data.phone}
+Email: ${data.email}
+Vehicle: ${data.vehicleModel}
+Service Type: ${data.serviceType}
+Branch: ${data.branch}
+Preferred Date: ${data.preferredDate}
+Notes: ${data.notes || "None"}`;
+
+        const encodedText = encodeURIComponent(text);
+        const whatsappNumber = "64277710004"; // +64 27 771 0004
+        
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodedText}`, "_blank");
+        
+        setSuccess(true);
+        reset();
     };
 
     if (success) {
@@ -47,13 +62,12 @@ export default function BookingForm() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                 </div>
-                <h2 className="text-4xl font-display text-white">BOOKING RECEIVED!</h2>
+                <h2 className="text-4xl font-display text-white">REDIRECTING...</h2>
                 <p className="text-muted max-w-md mx-auto font-body">
-                    Thank you for choosing NZ Auto Centre. We've sent a confirmation email to you
-                    and our team will be in touch shortly to confirm your slot.
+                    Please complete your booking request by sending the pre-filled message in WhatsApp. If it didn't open automatically, please ensure pop-ups are allowed.
                 </p>
                 <div className="pt-6">
-                    <Button variant="outline-red" onClick={() => window.location.reload()}>Book Another</Button>
+                    <Button variant="outline-red" onClick={() => setSuccess(false)}>Book Another</Button>
                 </div>
             </div>
         );
@@ -189,11 +203,9 @@ export default function BookingForm() {
                     variant="primary"
                     className="w-full sm:w-auto"
                     size="lg"
-                    isLoading={loading}
                 >
                     Confirm My Booking
                 </Button>
-                {error && <p className="mt-4 text-red-500 text-sm italic">{error}</p>}
             </div>
         </form>
     );

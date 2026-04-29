@@ -97,29 +97,28 @@ const services = [
 export default function ServicesPage() {
     return (
         <div className="bg-dark min-h-screen">
-            {/* Services Hero */}
-            <section className="relative h-[60vh] flex items-center overflow-hidden bg-dark">
-                {/* Background Image with Cinematic Overlays */}
+            {/* Hero Section */}
+            <section className="relative h-[60vh] flex items-center overflow-hidden bg-black">
                 <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/images/services_hero_workshop.png.jpeg"
-                        alt="High-Tech Auto Workshop"
-                        fill
-                        priority
-                        className="object-cover opacity-60 grayscale-[0.3] scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/40 to-transparent z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-dark/20 z-10" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(225,29,72,0.1),transparent_50%)] z-10" />
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover opacity-80 scale-105"
+                    >
+                        <source src="/images/service.mp4" type="video/mp4" />
+                    </video>
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent z-10" />
                 </div>
 
-                <div className="container-xl relative z-10 pt-32">
+                <div className="container-xl relative z-10 pt-32 flex justify-end w-full">
                     <FadeUp>
-                        <div className="max-w-3xl">
+                        <div className="max-w-3xl text-right">
                             <h1 className="font-display text-7xl md:text-9xl text-white tracking-tighter uppercase mb-8 leading-none">
                                 ELITE <span className="text-accent">DYNAMICS</span>
                             </h1>
-                            <p className="text-muted text-xl font-body max-w-xl leading-relaxed">
+                            <p className="text-white text-xl font-body max-w-xl leading-relaxed ml-auto">
                                 Our service protocols are designed for those who view their vehicles as precision machines, not just transport.
                             </p>
                         </div>
@@ -128,7 +127,7 @@ export default function ServicesPage() {
             </section>
 
             {/* Detailed Services Loop */}
-            <section className="py-32">
+            <section className="pt-32 pb-16 md:pb-20">
                 <div className="container-xl">
                     <div className="space-y-48">
                         {services.map((service, i) => (
@@ -171,7 +170,7 @@ export default function ServicesPage() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 1 }}
-                                    className="relative aspect-video lg:aspect-square overflow-hidden group"
+                                    className="relative w-[90%] md:w-[80%] lg:w-[70%] mx-auto aspect-[4/5] lg:aspect-[3/4] overflow-hidden group"
                                 >
                                     <Image
                                         src={service.image}
@@ -189,6 +188,45 @@ export default function ServicesPage() {
                                 </motion.div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Service Board Section */}
+            <section className="pb-24 md:pb-32 pt-8 lg:pt-12 relative border-t border-white/5 bg-gradient-to-b from-transparent to-black/20 overflow-hidden">
+                <div className="container-xl relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                        <FadeUp>
+                            <div className="space-y-8 max-w-xl">
+                                <div className="flex items-center gap-6">
+                                    <div className="h-[1px] w-12 bg-accent/20" />
+                                    <span className="font-heading text-xs uppercase tracking-[0.4em] text-accent font-bold">Comprehensive Overview</span>
+                                </div>
+                                <h2 className="font-display text-5xl md:text-6xl text-white uppercase tracking-tighter leading-tight">
+                                    Station <span className="text-accent">Service Board</span>
+                                </h2>
+                                <p className="text-muted text-lg font-body leading-relaxed">
+                                    Explore our comprehensive list of service offerings and packages directly from our station board. We believe in complete transparency and delivering high-quality automotive engineering solutions.
+                                </p>
+                                <div className="pt-6">
+                                    <Link href="/contact" className="inline-block border border-accent text-accent px-10 py-4 font-heading text-[15px] uppercase tracking-widest transition-all hover:bg-accent hover:text-dark-secondary hover:scale-105 active:scale-95">
+                                        Book A Service
+                                    </Link>
+                                </div>
+                            </div>
+                        </FadeUp>
+
+                        <FadeUp delay={0.2}>
+                            <div className="relative w-[90%] sm:w-[80%] lg:w-[85%] mx-auto lg:ml-auto lg:mr-0 aspect-[4/5] md:aspect-square lg:aspect-[4/5] xl:aspect-[3/4] rounded-xl overflow-hidden border border-white/10 group shadow-2xl shadow-black/50 bg-black/40">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(225,29,72,0.05),transparent_70%)] z-0" />
+                                <Image
+                                    src="/images/board.png"
+                                    alt="NZ Auto Centre Service Board"
+                                    fill
+                                    className="object-contain p-8 md:p-12 xl:p-16 relative z-10 scale-100 group-hover:scale-[1.02] transition-transform duration-700"
+                                />
+                            </div>
+                        </FadeUp>
                     </div>
                 </div>
             </section>

@@ -37,7 +37,7 @@ export default function HeroSection() {
             className="relative min-h-screen flex items-center bg-dark"
         >
             {/* Video Background */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
+            <div className="absolute inset-0 z-0 overflow-hidden bg-black">
                 <video
                     autoPlay
                     loop

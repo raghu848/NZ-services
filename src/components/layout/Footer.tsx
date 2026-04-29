@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Footer() {
     return (
@@ -14,13 +16,24 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="space-y-8">
                         <div>
-                            <Link href="/" className="flex items-center gap-3 mb-6">
-                                <div className="bg-accent text-white font-display text-xl w-10 h-10 flex items-center justify-center">
-                                    NZ
-                                </div>
-                                <span className="font-display text-2xl text-white uppercase">
-                                    AUTO <span className="text-accent">CENTRE</span>
-                                </span>
+                            <Link href="/" className="inline-block mb-6">
+                                <motion.div
+                                    animate={{ rotate: [0, 1080, 1080] }}
+                                    transition={{
+                                        duration: 4,
+                                        times: [0, 0.3, 1],
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    <Image
+                                        src="/images/Asset 1.png"
+                                        alt="NZ Auto Centre Logo"
+                                        width={300}
+                                        height={100}
+                                        className="object-contain h-16 md:h-20 w-auto"
+                                    />
+                                </motion.div>
                             </Link>
                             <p className="text-muted text-sm leading-relaxed font-body max-w-xs">
                                 Auckland's premier destination for high-performance automotive care and precision mechanical engineering.

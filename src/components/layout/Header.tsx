@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -36,18 +37,27 @@ export default function Header() {
                 {/* Dark inner bar - restoring pointer events for children */}
                 <div className="navbar-inner pointer-events-auto">
                     {/* Logo Group */}
-                    <div className="flex items-center gap-4">
-                        <Link href="/" className="logo-hex-custom no-underline">
-                            NZ
+                    <div className="flex items-center">
+                        <Link href="/" className="inline-block">
+                            <motion.div
+                                animate={{ rotate: [0, 1080, 1080] }}
+                                transition={{
+                                    duration: 4,
+                                    times: [0, 0.3, 1],
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                <Image
+                                    src="/images/Asset 1.png"
+                                    alt="NZ Auto Centre Logo"
+                                    width={300}
+                                    height={100}
+                                    className="object-contain h-14 md:h-16 w-auto"
+                                    priority
+                                />
+                            </motion.div>
                         </Link>
-                        <div className="flex flex-col">
-                            <span className="logo-name-custom italic">
-                                AUTO <span className="text-accent">CENTRE</span>
-                            </span>
-                            <span className="text-[9px] text-black/40 tracking-[0.4em] uppercase font-bold leading-none mt-1">
-                                PREMIUM AUTO CARE
-                            </span>
-                        </div>
                     </div>
 
                     {/* Desktop Links Group */}

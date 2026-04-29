@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -46,32 +47,52 @@ const stats = [
     { value: "NZTA", label: "Certified Grade" },
 ];
 
+const approachImages = [
+    { src: "/images/mechanical_expertise.png", caption: "Technical Core", desc: "Precision isn't just a goal, it's our standard operating procedure." },
+    { src: "/5.jpg.jpeg", caption: "Advanced Engineering", desc: "Utilizing modern mechanical science for uncompromised performance." }
+];
+
 export default function AboutPage() {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % approachImages.length);
+        }, 4000);
+        return () => clearInterval(timer);
+    }, []);
+
     return (
         <div className="bg-dark min-h-screen">
             {/* Cinematic Hero */}
             <section className="relative h-[80vh] flex items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/images/about_hero.png"
-                        alt="NZ Auto Centre Workshop"
-                        fill
-                        className="object-cover scale-110 opacity-40 grayscale"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-transparent" />
+                <div className="absolute inset-0 z-0 overflow-hidden flex items-center justify-end">
+                    <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                        className="relative w-[120vh] h-[120vh] min-w-[800px] min-h-[800px] mr-[-10%] md:mr-[-5%]"
+                    >
+                        <Image
+                            src="/images/Vishal_Ka_Tyre.png"
+                            alt="NZ Auto Centre Workshop"
+                            fill
+                            priority
+                            className="object-contain opacity-100"
+                        />
+                    </motion.div>
                 </div>
 
-                <div className="container-xl relative z-10 pt-32">
+                <div className="container-xl relative z-10 pt-32 w-full flex justify-start">
                     <FadeUp>
-                        <div className="max-w-4xl">
+                        <div className="max-w-3xl text-left pl-4 md:pl-0">
                             <div className="inline-block px-4 py-1 bg-accent/10 border border-accent/20 rounded-full mb-8">
                                 <span className="font-heading text-[10px] uppercase tracking-[0.4em] text-accent">Our Legacy</span>
                             </div>
-                            <h1 className="font-display text-7xl md:text-9xl text-white tracking-tighter leading-none uppercase mb-8">
+                            <h1 className="font-display text-5xl md:text-8xl text-white tracking-tighter leading-none uppercase mb-8">
                                 ENGINEERING <br />
                                 <span className="text-accent">TRUST</span> SINCE 2012
                             </h1>
-                            <p className="text-muted text-xl font-body max-w-2xl leading-relaxed">
+                            <p className="text-white text-lg md:text-xl font-body max-w-xl leading-relaxed">
                                 NZ Auto Centre isn't just a workshop. We are a team of precision engineers dedicated to elevating the standard of automotive care in Auckland.
                             </p>
                         </div>
@@ -124,28 +145,46 @@ export default function AboutPage() {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1 }}
-                                className="relative aspect-[4/5] overflow-hidden border border-white/10 shadow-2xl"
+                                className="relative aspect-[4/5] overflow-hidden border border-white/10 shadow-2xl group"
                             >
-                                <Image
-                                    src="/images/mechanical_expertise.png"
-                                    alt="Expert Mechanic at Work"
-                                    fill
-                                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent" />
-                                <div className="absolute bottom-10 left-10 right-10">
-                                    <div className="p-8 backdrop-blur-xl bg-white/5 border border-white/10">
-                                        <div className="text-accent font-heading text-xs uppercase tracking-widest mb-2">Technical Core</div>
-                                        <div className="text-white text-sm font-body italic leading-relaxed">
-                                            "Precision isn't just a goal, it's our standard operating procedure."
+                                {approachImages.map((img, idx) => (
+                                    <div 
+                                        key={idx} 
+                                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentImageIndex === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                                    >
+                                        <Image
+                                            src={img.src}
+                                            alt={img.caption}
+                                            fill
+                                            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent" />
+                                        <div className="absolute bottom-10 left-10 right-10">
+                                            <div className="p-8 bg-dark/80 border border-white/10 transform transition-transform duration-500 hover:-translate-y-2">
+                                                <div className="text-accent font-heading text-xs uppercase tracking-widest mb-2">{img.caption}</div>
+                                                <div className="text-white text-sm font-body italic leading-relaxed">
+                                                    "{img.desc}"
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                ))}
+
+                                {/* Slider Indicators */}
+                                <div className="absolute top-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                                    {approachImages.map((_, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => setCurrentImageIndex(idx)}
+                                            className={`w-12 h-1 transition-all duration-500 ${currentImageIndex === idx ? 'bg-accent' : 'bg-white/20 hover:bg-white/40'}`}
+                                        />
+                                    ))}
                                 </div>
                             </motion.div>
 
                             {/* Decorative Elements */}
-                            <div className="absolute -top-12 -right-12 w-64 h-64 bg-accent/10 blur-[120px] rounded-full pointer-events-none" />
-                            <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
+                            <div className="absolute -top-12 -right-12 w-64 h-64 bg-accent/10 rounded-full pointer-events-none" />
+                            <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-accent/5 rounded-full pointer-events-none" />
                         </div>
                     </div>
                 </div>
