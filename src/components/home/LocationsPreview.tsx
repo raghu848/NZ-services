@@ -8,19 +8,19 @@ import FadeUp from "@/components/ui/FadeUp";
 const branches = [
     {
         name: "Manurewa • South Auckland",
-        address: "6 Holmes Road, Manurewa, Auckland",
-        phone: "09 267 8700",
+        address: "6 Holmes Road, Manurewa, Auckland 2102",
+        phone: "09 558 7788",
         email: "manurewa@nzautocentre.co.nz",
-        hours: "Mon–Fri 8am–5:30pm | Sat 8am–3pm",
+        hours: "Open 7 Days, 9am - 7pm",
         mapLink: "https://maps.google.com/?q=6+Holmes+Road+Manurewa",
         image: "/workshop-2.jpeg"
     },
     {
         name: "Henderson • West Auckland",
-        address: "17 View Road, Henderson, Auckland",
-        phone: "09 837 0211",
+        address: "17 View Road, Henderson, Auckland 0612",
+        phone: "09 558 7073",
         email: "henderson@nzautocentre.co.nz",
-        hours: "Mon–Fri 8am–5:30pm | Sat 8am–3pm",
+        hours: "Open 7 Days, 9am - 7pm",
         mapLink: "https://maps.google.com/?q=17+View+Road+Henderson",
         image: "/workshop-3.jpeg"
     },

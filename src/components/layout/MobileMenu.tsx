@@ -78,7 +78,7 @@ export default function MobileMenu({ navLinks }: MobileMenuProps) {
 
                     <div className="mt-auto pt-10 border-t border-border-dark">
                         <p className="text-muted text-sm mb-2">Need immediate help?</p>
-                        <a href="tel:09XXXXXXX" className="text-xl font-heading text-white">09 XXX XXXX</a>
+                        <a href="tel:095587788" className="text-xl font-heading text-white">09 558 7788</a>
                     </div>
                 </div>
             </div>

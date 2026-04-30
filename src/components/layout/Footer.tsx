@@ -96,13 +96,14 @@ export default function Footer() {
                         <div className="space-y-8">
                             <div>
                                 <div className="font-heading text-[10px] uppercase tracking-widest text-accent mb-2">Support Line</div>
-                                <div className="text-white font-display text-2xl tracking-tight">09 267 8700</div>
+                                <div className="text-white font-display text-2xl tracking-tight">09 558 7788</div>
                             </div>
                             <div>
                                 <div className="font-heading text-[10px] uppercase tracking-widest text-accent mb-2">Main Email</div>
                                 <div className="text-white font-body text-sm">support@nzautocentre.co.nz</div>
                             </div>
-                            <div className="flex gap-4 pt-4">
+                            <div className="flex flex-wrap gap-3 pt-4">
+                                <span className="px-3 py-1 bg-white/5 border border-white/10 text-[9px] uppercase tracking-widest text-accent">Open 7 Days: 9am - 7pm</span>
                                 <span className="px-3 py-1 bg-white/5 border border-white/10 text-[9px] uppercase tracking-widest text-muted">Auckland Wide</span>
                                 <span className="px-3 py-1 bg-white/5 border border-white/10 text-[9px] uppercase tracking-widest text-muted">24/7 Booking</span>
                             </div>

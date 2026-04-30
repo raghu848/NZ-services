@@ -4,13 +4,13 @@ export default function ContactSidebar() {
     const branches = [
         {
             name: "Manurewa (South)",
-            phone: "09 XXX XXXX",
-            address: "6 Holmes Road, Manurewa",
+            phone: "09 558 7788",
+            address: "6 Holmes Road, Manurewa, Auckland 2102",
         },
         {
             name: "Henderson (West)",
-            phone: "09 XXX XXXX",
-            address: "17 View Road, Henderson",
+            phone: "09 558 7073",
+            address: "17 View Road, Henderson, Auckland 0612",
         }
     ];
 
@@ -45,6 +45,12 @@ export default function ContactSidebar() {
                                     </svg>
                                     <span className="text-white/80">{branch.address}</span>
                                 </div>
+                                <div className="flex items-start gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-white/40 shrink-0">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <span className="text-white/80">Open 7 Days • 9:00 AM - 7:00 PM</span>
+                                </div>
                             </div>
                         </div>
                     </FadeUp>
@@ -57,8 +63,8 @@ export default function ContactSidebar() {
                     <p className="text-white/90 text-sm font-body mb-4 leading-relaxed">
                         Need urgent assistance or breakdown recovery? Call our priority line.
                     </p>
-                    <a href="tel:09XXXXXXX" className="text-2xl font-heading text-white flex items-center gap-2">
-                        09 XXX XXXX
+                    <a href="tel:095587788" className="text-2xl font-heading text-white flex items-center gap-2">
+                        09 558 7788
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 animate-pulse">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                         </svg>

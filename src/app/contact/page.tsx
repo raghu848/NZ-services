@@ -9,7 +9,7 @@ const contactInfo = [
             </svg>
         ),
         label: "South Auckland",
-        value: "09 XXX XXXX",
+        value: "09 558 7788",
     },
     {
         icon: (
@@ -18,7 +18,7 @@ const contactInfo = [
             </svg>
         ),
         label: "West Auckland",
-        value: "09 XXX XXXX",
+        value: "09 558 7073",
     },
     {
         icon: (
@@ -36,7 +36,7 @@ const contactInfo = [
             </svg>
         ),
         label: "Working Hours",
-        value: "Mon–Fri 8am–5:30pm | Sat 8am–3pm",
+        value: "Open 7 Days, 9am - 7pm",
     },
 ];
 
