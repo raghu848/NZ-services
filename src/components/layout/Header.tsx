@@ -39,15 +39,6 @@ export default function Header() {
                     {/* Logo Group */}
                     <div className="flex items-center">
                         <Link href="/" className="inline-block">
-                            <motion.div
-                                animate={{ rotate: [0, 1080, 1080] }}
-                                transition={{
-                                    duration: 4,
-                                    times: [0, 0.3, 1],
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                            >
                                 <Image
                                     src="/images/Asset 1.png"
                                     alt="NZ Auto Centre Logo"
@@ -56,7 +47,6 @@ export default function Header() {
                                     className="object-contain h-14 md:h-16 w-auto"
                                     priority
                                 />
-                            </motion.div>
                         </Link>
                     </div>
 

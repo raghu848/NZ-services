@@ -18,6 +18,7 @@ export default function Home() {
         title="ENGINEERED FOR PERFORMANCE"
         subtitle="Experience Auckland's most advanced mechanical diagnostics and precision repairs."
         variant="red"
+        videoSrc="/images/car.mp4"
       />
 
       <ReviewsSlider />

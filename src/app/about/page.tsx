@@ -41,7 +41,7 @@ const values = [
 ];
 
 const stats = [
-    { value: "15Y+", label: "Elite Experience" },
+    { value: "7Y+", label: "Elite Experience" },
     { value: "02", label: "Advanced Facilities" },
     { value: "98%", label: "Client Retention" },
     { value: "NZTA", label: "Certified Grade" },

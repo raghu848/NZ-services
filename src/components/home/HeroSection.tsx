@@ -43,9 +43,9 @@ export default function HeroSection() {
                     loop
                     muted
                     playsInline
-                    className="absolute inset-0 w-full h-full object-cover opacity-70 scale-105"
+                    className="absolute inset-0 w-full h-full object-cover scale-105"
                 >
-                    <source src="/WhatsApp Video 2026-02-26 at 12.15.16 PM.mp4" type="video/mp4" />
+                    <source src="/images/NZ_Website%20(1).mp4" type="video/mp4" />
                 </video>
 
                 {/* Overlays */}
