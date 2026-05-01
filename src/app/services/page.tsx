@@ -43,7 +43,7 @@ const services = [
         tagline: "Surface Intelligence",
         description: "Optimizing the critical contact patch through laser-guided alignment and dynamic balancing.",
         details: [
-            "Laser wheel alignment (4-wheel)",
+            // "Laser wheel alignment (4-wheel)",
             "High-performance tyre fitment",
             "Digital dynamic balancing",
             "Tread depth & compound analysis"
@@ -76,7 +76,7 @@ const services = [
             "Safety restraint verification",
             "Emissions & lighting compliance"
         ],
-        image: "https://images.unsplash.com/photo-1600861194942-f883de0dfe96?w=800&q=80&auto=format&fit=crop"
+        image: "/images/wof_inspection.png"
     },
     {
         id: "drivetrain",
@@ -90,7 +90,7 @@ const services = [
             "CV joint & axle replacement",
             "Clutch system calibration"
         ],
-        image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80&auto=format&fit=crop"
+        image: "/images/transmission_repair.png"
     }
 ];
 

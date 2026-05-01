@@ -39,14 +39,14 @@ const services = [
         num: "05",
         title: "WOF & Safety Compliance",
         description: "Official Warrant of Fitness inspections and pre-purchase safety reports by NZTA certified inspectors.",
-        image: "https://images.unsplash.com/photo-1600861194942-f883de0dfe96?w=800&q=80&auto=format&fit=crop",
+        image: "/images/wof_inspection.png",
         tags: ["NZTA", "Local", "Safety"],
     },
     {
         num: "06",
         title: "Transmission Surgery",
         description: "Complete drivetrain repair and transmission servicing. Smooth gear transitions and long-term reliability guaranteed.",
-        image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80&auto=format&fit=crop",
+        image: "/images/transmission_repair.png",
         tags: ["Gearbox", "Drive", "Power"],
     },
 ];

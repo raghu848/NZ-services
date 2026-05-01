@@ -3,12 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import FooterInteractiveBg from "./FooterInteractiveBg";
 
 export default function Footer() {
     return (
         <footer className="bg-dark border-t border-white/5 pt-24 pb-12 overflow-hidden relative">
+            {/* Interactive Background */}
+            <FooterInteractiveBg />
+
             {/* Background Accent */}
-            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-30" />
+            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-30 z-10" />
 
             <div className="container-xl relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
@@ -16,7 +20,7 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="space-y-8">
                         <div>
-                            <Link href="/" className="inline-block mb-6">
+                            <Link href="/" className="flex flex-col items-center mb-6">
                                 <motion.div
                                     animate={{ rotate: [0, 1080, 1080] }}
                                     transition={{
@@ -34,6 +38,7 @@ export default function Footer() {
                                         className="object-contain h-16 md:h-20 w-auto"
                                     />
                                 </motion.div>
+                                <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-[0.2em] mt-3 font-heading leading-none">NZ Auto Centre</span>
                             </Link>
                             <p className="text-muted text-sm leading-relaxed font-body max-w-xs">
                                 Auckland's premier destination for high-performance automotive care and precision mechanical engineering.
@@ -103,7 +108,7 @@ export default function Footer() {
                                 <div className="text-white font-body text-sm">support@nzautocentre.co.nz</div>
                             </div>
                             <div className="flex flex-wrap gap-3 pt-4">
-                                <span className="px-3 py-1 bg-white/5 border border-white/10 text-[9px] uppercase tracking-widest text-accent">Open 7 Days: 9am - 7pm</span>
+                                <span className="px-3 py-1 bg-white/5 border border-white/10 text-[9px] uppercase tracking-widest text-accent">Open 7 Days: 9am - 6pm</span>
                                 <span className="px-3 py-1 bg-white/5 border border-white/10 text-[9px] uppercase tracking-widest text-muted">Auckland Wide</span>
                                 <span className="px-3 py-1 bg-white/5 border border-white/10 text-[9px] uppercase tracking-widest text-muted">24/7 Booking</span>
                             </div>

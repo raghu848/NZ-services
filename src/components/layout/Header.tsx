@@ -38,15 +38,16 @@ export default function Header() {
                 <div className="navbar-inner pointer-events-auto">
                     {/* Logo Group */}
                     <div className="flex items-center">
-                        <Link href="/" className="inline-block">
+                        <Link href="/" className="flex flex-col items-center justify-center py-1">
                                 <Image
                                     src="/images/Asset 1.png"
                                     alt="NZ Auto Centre Logo"
                                     width={300}
                                     height={100}
-                                    className="object-contain h-14 md:h-16 w-auto"
+                                    className="object-contain h-12 md:h-14 w-auto"
                                     priority
                                 />
+                                <span className="text-[9px] md:text-[10px] font-bold text-black uppercase tracking-[0.2em] mt-1 leading-none font-heading">NZ Auto Centre</span>
                         </Link>
                     </div>
 
